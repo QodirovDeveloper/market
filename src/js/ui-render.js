@@ -1,6 +1,6 @@
 // ui-render.js
 import { elContainer, elLoader } from "./html-elements.js";
-import { addBasket } from "./cart.js"; // <-- bu qatorni qo'shing
+import { addBasket } from "./cart.js";
 
 export function uiRender(products) {
   elLoader.classList.add("hidden");

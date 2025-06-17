@@ -81,7 +81,7 @@ function renderTags() {
   });
 }
 
-// Dark/Light rejim
+// Dark Light
 const html = document.documentElement;
 const themeTogler = document.getElementById("theme-toggler");
 const theme = localStorage.getItem("theme");

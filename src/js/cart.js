@@ -50,7 +50,7 @@ export function updateCartInfo() {
       <div class="text-center mt-12">
         <p class="text-2xl font-semibold">Your Cart (0)</p>
         <div class="mt-6 flex justify-center select-none">
-          <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" alt="empty" class="max-w-[100px] h-auto opacity-70" />
+          <img src="/src/images/empty.png" alt="empty" class="max-w-[100px] h-auto opacity-70" />
         </div>
         <p class="mt-4 text-gray-600">Your added items will appear here</p>
       </div>
