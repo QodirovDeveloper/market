@@ -1,4 +1,6 @@
+// ui-render.js
 import { elContainer, elLoader } from "./html-elements.js";
+import { addBasket } from "./cart.js"; // <-- bu qatorni qo'shing
 
 export function uiRender(products) {
   elLoader.classList.add("hidden");
@@ -11,7 +13,7 @@ export function uiRender(products) {
   elContainer.innerHTML = ""; // har renderda tozalab olish muhim
 
   products.forEach((element) => {
-    const { thumbnail, category, title, price, rating } = element;
+    const { id, thumbnail, category, title, price, rating } = element;
 
     elContainer.innerHTML += `
       <li class="list-none">
@@ -22,7 +24,8 @@ export function uiRender(products) {
             <img class="rounded-xl w-full" src="${thumbnail}" alt="product" />
 
             <button
-              class="absolute left-6 right-6 xl:-bottom-6 bottom-[-20px] cursor-pointer py-2 text-sm sm:text-base px-4 sm:px-7 text-black bg-white border border-[#AD8A85] rounded-full">
+              class="add-to-cart absolute left-6 right-6 xl:-bottom-6 bottom-[-20px] cursor-pointer py-2 text-sm sm:text-base px-4 sm:px-7 text-black bg-white border border-[#AD8A85] rounded-full"
+              data-id="${id}">
               <i class="fa-solid fa-cart-plus"></i> Add to Cart
             </button>
           </div>
@@ -45,4 +48,13 @@ export function uiRender(products) {
 
   elContainer.classList.remove("hidden");
   elContainer.classList.add("grid");
+
+  const btns = document.querySelectorAll(".add-to-cart");
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = parseInt(btn.getAttribute("data-id"));
+      const product = products.find((p) => p.id === id);
+      addBasket({ ...product, name: product.title });
+    });
+  });
 }

@@ -1,4 +1,6 @@
+// app.js
 import { uiRender } from "./ui-render.js";
+import { updateProductsCounter, updateCartInfo } from "./cart.js";
 
 let products = []; // Global o'zgaruvchi
 
@@ -12,6 +14,9 @@ fetch("https://dummyjson.com/products")
     renderTags();
   })
   .catch((error) => console.error(error));
+
+updateProductsCounter();
+updateCartInfo();
 
 // Narx bo‘yicha sortlash
 document.getElementById("price-sort").addEventListener("click", (e) => {
